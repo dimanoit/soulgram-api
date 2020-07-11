@@ -34,6 +34,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Soulgram.Exceptions", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Soulgram.GraphScripts", "src\Soulgram.GraphScripts\Soulgram.GraphScripts.csproj", "{BCFA262A-461B-418F-BAFB-09F11D586339}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soulgram.DB", "src\Soulgram.DB\Soulgram.DB.csproj", "{67245316-4CA4-4D28-BAF9-E8431E5E00FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +74,10 @@ Global
 		{BCFA262A-461B-418F-BAFB-09F11D586339}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCFA262A-461B-418F-BAFB-09F11D586339}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCFA262A-461B-418F-BAFB-09F11D586339}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67245316-4CA4-4D28-BAF9-E8431E5E00FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67245316-4CA4-4D28-BAF9-E8431E5E00FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67245316-4CA4-4D28-BAF9-E8431E5E00FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67245316-4CA4-4D28-BAF9-E8431E5E00FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +91,7 @@ Global
 		{89823D8B-86EC-48A9-9E16-110EAFF7000A} = {024D1CC8-2803-4B4F-9486-DFBC8E64A3F5}
 		{F8CE055B-61B7-42A8-A034-6CF6A0713CF4} = {90E195B5-2C3E-43B5-B472-EC7DDBF35D31}
 		{BCFA262A-461B-418F-BAFB-09F11D586339} = {36B5913D-4503-4565-BB7B-13850BDE4404}
+		{67245316-4CA4-4D28-BAF9-E8431E5E00FC} = {90E195B5-2C3E-43B5-B472-EC7DDBF35D31}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5895179C-BE08-4AA2-9BA0-98C93975A973}
