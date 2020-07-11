@@ -12,8 +12,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Soulgram.Common\Soulgram.Common.csproj" />
+    <ProjectReference Include="..\Soulgram.DB\Soulgram.DB.csproj" />
     <ProjectReference Include="..\Soulgram.Exceptions\Soulgram.Exceptions.csproj" />
-    <ProjectReference Include="..\Soulgram.GraphScripts\Soulgram.GraphScripts.csproj" />
     <ProjectReference Include="..\Soulgram.Swagger\Soulgram.Swagger.csproj" />
     <ProjectReference Include="..\Soulgram.UserInfo\Soulgram.UserInfo.csproj" />
   </ItemGroup>

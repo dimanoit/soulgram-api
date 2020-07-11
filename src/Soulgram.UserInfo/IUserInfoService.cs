@@ -1,10 +1,10 @@
-﻿using Soulgram.UserInfo.Models;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Soulgram.UserInfo.Models;
 
 namespace Soulgram.UserInfo
 {
     public interface IUserInfoService
     {
-        public Task<UserInfoResponse> Get(UserInfoRequest request);
+        public Task AddAsync(User user);
     }
 }

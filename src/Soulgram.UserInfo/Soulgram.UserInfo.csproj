@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Soulgram.DB\Soulgram.DB.csproj" />
     <ProjectReference Include="..\Soulgram.Model\Soulgram.Model.csproj" />
     <ProjectReference Include="..\Soulgram.Validation\Soulgram.Validation.csproj" />
   </ItemGroup>

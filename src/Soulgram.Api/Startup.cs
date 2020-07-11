@@ -9,6 +9,7 @@ using Soulgram.Common;
 using Soulgram.Swagger;
 using Soulgram.UserInfo;
 using FluentValidation.AspNetCore;
+using Soulgram.DB;
 
 namespace Soulgram.Api
 {
@@ -25,7 +26,7 @@ namespace Soulgram.Api
         {
             ConfigureJsonSerialization();
 
-
+            services.AddNeo4JDriver(_configuration);
             services.AddUserInfoService();
 
             services

@@ -5,19 +5,19 @@ using System.Threading.Tasks;
 
 namespace Soulgram.Api.Controllers
 {
-    [Route("/user/info")]
-    public class UserInfoController : ControllerBase
+    [Route("/user")]
+    public class UserController : ControllerBase
     {
         private readonly IUserInfoService _userInfoService;
-        public UserInfoController(IUserInfoService userInfoService)
+        public UserController(IUserInfoService userInfoService)
         {
             _userInfoService = userInfoService;
         }
 
-        [HttpGet]
-        public async Task<UserInfoResponse> Get(UserInfoRequest request)
+        [HttpPost]
+        public async Task AddUser([FromBody] User user)
         {
-            return await _userInfoService.Get(request);
+            await _userInfoService.AddAsync(user);
         }
     }
 }

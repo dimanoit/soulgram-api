@@ -10,8 +10,8 @@ namespace Soulgram.UserInfo
         public static IServiceCollection AddUserInfoService(this IServiceCollection services)
         {
             return services
-                .AddTransient<IUserInfoService, UserInfoService>()
-                .AddValidator<UserInfoRequest, UserInfoRequestValidator>();
+                .AddTransient<IUserInfoService, UserService>()
+                .AddValidator<User, UserRequestValidator>();
         }
     }
 }

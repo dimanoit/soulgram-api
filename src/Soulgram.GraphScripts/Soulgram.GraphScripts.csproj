@@ -8,8 +8,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.5" />
     <PackageReference Include="Neo4j.Driver" Version="4.1.0" />
-    <PackageReference Include="Neo4jClient" Version="3.2.0.1" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Soulgram.Common\Soulgram.Common.csproj" />
+    <ProjectReference Include="..\Soulgram.DB\Soulgram.DB.csproj" />
   </ItemGroup>
 
 </Project>
