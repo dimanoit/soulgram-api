@@ -1,36 +1,28 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using Neo4jClient;
 
 namespace Soulgram.GraphScripts
 {
     class Program
     {
         #region DiRegistration
+
         private static ServiceProvider _appServiceProvider;
+
         static Program()
         {
             var services = new ServiceCollection();
-            services.AddNeo4jClient();
+            // Please register all services here
+
             _appServiceProvider = services.BuildServiceProvider();
+
         }
 
         #endregion
 
-        static void Main(string[] args)
+        public static void Main()
         {
-            try
-            {
-                var graphClient = _appServiceProvider.GetService<IGraphClient>();
-                Console.WriteLine("Hello World!");
-            }
-            catch (Exception e)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(e.Message);
-                Console.ForegroundColor = ConsoleColor.White;
-            }
-            Console.ReadLine();
+            var helloWorld = new HelloWorldExample("bolt://localhost:7687", "neo4j", "dima");
+            helloWorld.PrintGreetingAsync("Kek").GetAwaiter().GetResult();
         }
     }
 }

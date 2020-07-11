@@ -8,7 +8,6 @@ using Soulgram.Api.Filters;
 using Soulgram.Common;
 using Soulgram.Swagger;
 using Soulgram.UserInfo;
-using Soulgram.UserInfoDB;
 using FluentValidation.AspNetCore;
 
 namespace Soulgram.Api
@@ -27,7 +26,6 @@ namespace Soulgram.Api
             ConfigureJsonSerialization();
 
 
-            services.AddUserInfoDb(_configuration);
             services.AddUserInfoService();
 
             services
