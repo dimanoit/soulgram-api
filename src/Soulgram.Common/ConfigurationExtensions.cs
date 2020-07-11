@@ -10,7 +10,6 @@ namespace Soulgram.Common
             configurationBuilder.Sources.Clear();
 
             configurationBuilder
-                .AddJsonFile("appsettings.Common.json", false, false)
                 .AddJsonFile("appsettings.json", false, false)
                 .AddJsonFile($"appsettings.{environmentName}.json", true, false)
                 .AddEnvironmentVariables();
