@@ -11,7 +11,10 @@ namespace Soulgram.Api.Filters
         {
             if (!context.ModelState.IsValid)
             {
-                var errorList = context.ModelState.Select(model => new ValidationError(model.Key, model.Value.Errors.Select(err => err.ErrorMessage)));
+                var errorList = context.ModelState.
+                    Select(model => 
+                        new ValidationError(model.Key, model.Value.Errors.Select(err => err.ErrorMessage)));
+
                 throw new ValidationFailedException($"Parameter validation failed", errorList);
             }
         }

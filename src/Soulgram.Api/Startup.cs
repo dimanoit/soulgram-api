@@ -9,6 +9,7 @@ using Soulgram.Common;
 using Soulgram.Swagger;
 using Soulgram.UserInfo;
 using FluentValidation.AspNetCore;
+using Soulgram.Api.Middelwares;
 using Soulgram.DB;
 
 namespace Soulgram.Api
@@ -50,6 +51,8 @@ namespace Soulgram.Api
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseMiddleware<ExceptionMiddleware>();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

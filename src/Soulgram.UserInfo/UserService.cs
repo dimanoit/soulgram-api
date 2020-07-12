@@ -21,7 +21,6 @@ namespace Soulgram.UserInfo
             var queryParameters = new Dictionary<string, object> { { "login", user.Login }, { "password", user.Password } };
 
             // TODO make a function
-            // TODO add exception middleware
             if (!string.IsNullOrEmpty(user.Name))
             {
                 cypherQuery.Append(", name: $name");
