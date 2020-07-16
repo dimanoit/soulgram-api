@@ -5,6 +5,8 @@ using Neo4j.Driver;
 using Soulgram.Common;
 using Soulgram.DB;
 using System.Threading.Tasks;
+using Soulgram.DB.Entities;
+using Soulgram.DB.Repositories;
 
 namespace Soulgram.GraphScripts
 {
@@ -14,14 +16,14 @@ namespace Soulgram.GraphScripts
 
         static Program()
         {
-            //TODO add configuration files to project
             IConfiguration configuration = new ConfigurationBuilder()
                 .AddDefaultConfiguration("Development")
                 .Build();
+
             var services = new ServiceCollection();
 
             // Please register all services here
-            services.AddNeo4JDriver(configuration);
+            services.AddDb(configuration);
 
             AppServiceProvider = services.BuildServiceProvider();
         }
@@ -30,7 +32,11 @@ namespace Soulgram.GraphScripts
         {
             var driver = AppServiceProvider.GetService<IDriver>();
             await driver.VerifyConnectivityAsync();
-            Console.WriteLine();
+
+            var songRepository = AppServiceProvider.GetService<IRepository<Song>>();
+            // var song = await songRepository.GetAsync(10,0);
+            var song = await songRepository.GetAsync(2);
+
         }
     }
 }
