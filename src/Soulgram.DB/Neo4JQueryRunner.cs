@@ -15,28 +15,50 @@ namespace Soulgram.DB
             _driver = driver;
         }
 
-        public Task<IEnumerable<T>> Read(Query query)
+        public async Task<IEnumerable<T>> Read(Query query)
         {
-            throw new NotImplementedException();
+            var jsonResult = await ReadJsonAsync(query,
+                cursor => cursor.ToListAsync(record => record[0].As<INode>().Properties));
+
+            return JsonConvert.DeserializeObject<IEnumerable<T>>(jsonResult);
         }
 
         public async Task<T> ReadSingleAsync(Query query)
         {
-            var session = _driver.AsyncSession();
-            var result = await session.ReadTransactionAsync(async tx =>
-            {
-                var cursor = await tx.RunAsync(query);
-                return cursor.SingleAsync(record => record[0].As<INode>().Properties);
-            });
+            var jsonResult = await ReadJsonAsync(query,
+                cursor => cursor.SingleAsync(record => record[0].As<INode>().Properties));
 
-            await session.CloseAsync();
-            var jsonResult = JsonConvert.SerializeObject(await result);
             return JsonConvert.DeserializeObject<T>(jsonResult);
         }
 
         public Task RunQueryAsync(Query query)
         {
             throw new NotImplementedException();
+        }
+
+        private async Task<string> ReadJsonAsync<TKeyValue>(Query query, Func<IResultCursor, Task<TKeyValue>> resultAggregationFunc)
+        {
+            IAsyncSession session = null;
+            TKeyValue result;
+
+            try
+            {
+                session = _driver.AsyncSession();
+                result = await session.ReadTransactionAsync(async tx =>
+                {
+                    var cursor = await tx.RunAsync(query);
+                    return await resultAggregationFunc(cursor);
+                });
+            }
+            finally
+            {
+                if (session != null)
+                {
+                    await session.CloseAsync();
+                }
+            }
+
+            return JsonConvert.SerializeObject(result);
         }
     }
 }

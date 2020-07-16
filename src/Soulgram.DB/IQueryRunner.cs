@@ -8,7 +8,7 @@ namespace Soulgram.DB
     public interface IQueryRunner<TEntity> where TEntity : EntityBase
     {
         Task<TEntity> ReadSingleAsync(Query query);
-        Task<IEnumerable<TEntity>> Read(Query query);
+        Task<IEnumerable<TEntity>> ReadAsync(Query query);
         Task RunQueryAsync(Query query);
     }
 }
