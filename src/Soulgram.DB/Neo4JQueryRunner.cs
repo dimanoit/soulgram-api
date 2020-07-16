@@ -7,15 +7,18 @@ using Soulgram.DB.Entities;
 
 namespace Soulgram.DB
 {
-    internal class Neo4JQueryRunner<T> : IQueryRunner<T> where T : EntityBase
+    internal sealed class Neo4JQueryRunner<T> : IQueryRunner<T> where T : EntityBase
     {
+        // Not implemented IDisposable, because exist possibility
+        // to have deadlock with current Dispose pattern
+        // implementation in Driver sources
         private readonly IDriver _driver;
         public Neo4JQueryRunner(IDriver driver)
         {
             _driver = driver;
         }
 
-        public async Task<IEnumerable<T>> Read(Query query)
+        public async Task<IEnumerable<T>> ReadAsync(Query query)
         {
             var jsonResult = await ReadJsonAsync(query,
                 cursor => cursor.ToListAsync(record => record[0].As<INode>().Properties));
@@ -31,9 +34,17 @@ namespace Soulgram.DB
             return JsonConvert.DeserializeObject<T>(jsonResult);
         }
 
-        public Task RunQueryAsync(Query query)
+        public async Task RunQueryAsync(Query query)
         {
-            throw new NotImplementedException();
+            var session = _driver.AsyncSession();
+            try
+            {
+                await session.RunAsync(query);
+            }
+            finally
+            {
+                await session.CloseAsync();
+            }
         }
 
         private async Task<string> ReadJsonAsync<TKeyValue>(Query query, Func<IResultCursor, Task<TKeyValue>> resultAggregationFunc)

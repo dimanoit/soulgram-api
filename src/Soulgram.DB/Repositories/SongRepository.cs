@@ -49,10 +49,6 @@ namespace Soulgram.DB.Repositories
         {
             throw new System.NotImplementedException();
         }
-        public Task<Song> SetAsync(Song entity)
-        {
-            throw new NotImplementedException();
-        }
 
         public Task<Song> BulkDeleteAsync(Song entity)
         {
@@ -65,6 +61,11 @@ namespace Soulgram.DB.Repositories
         public Task<Song> BulkUpdateAsync(Song entity)
         {
             throw new System.NotImplementedException();
+        }
+
+        Task IRepository<Song>.SetAsync(Song entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

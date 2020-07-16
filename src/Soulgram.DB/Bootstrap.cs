@@ -20,8 +20,11 @@ namespace Soulgram.DB
             }
 
             services.TryAddSingleton(GraphDatabase.Driver(options.Uri, authorizationToken));
-            services.AddTransient<IRepository<Song>, SongRepository>();
-            services.AddTransient<IQueryRunner<Song>, Neo4JQueryRunner<Song>>();
+            services.TryAddSingleton(typeof(IQueryRunner<>), typeof(Neo4JQueryRunner<>));
+
+            services.AddScoped<IRepository<Song>, SongRepository>()
+                .AddScoped<IRepository<User>, UserRepository>();
+
             return services;
         }
     }

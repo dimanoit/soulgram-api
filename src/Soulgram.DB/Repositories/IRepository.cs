@@ -11,7 +11,7 @@ namespace Soulgram.DB.Repositories
         Task<IEnumerable<T>> GetAsync(int take, int skip);
         Task<T> DeleteAsync(int id);
         Task<T> UpdateAsync(T entity);
-        Task<T> SetAsync(T entity);
+        Task SetAsync(T entity);
         Task<T> BulkDeleteAsync(T entity);
         Task<T> BulkSetAsync(IEnumerable<T> entity);
         Task<T> BulkUpdateAsync(T entity);

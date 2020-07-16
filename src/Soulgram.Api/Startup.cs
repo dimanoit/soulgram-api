@@ -27,7 +27,7 @@ namespace Soulgram.Api
         {
             ConfigureJsonSerialization();
 
-            services.AddNeo4JDriver(_configuration);
+            services.AddDb(_configuration);
             services.AddUserInfoService();
 
             services

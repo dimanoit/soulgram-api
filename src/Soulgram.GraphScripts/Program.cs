@@ -34,8 +34,15 @@ namespace Soulgram.GraphScripts
             await driver.VerifyConnectivityAsync();
 
             var songRepository = AppServiceProvider.GetService<IRepository<Song>>();
-            //var song = await songRepository.GetAsync(10,0);
-            var song = await songRepository.GetAsync(2);
+            var song = await songRepository.GetAsync(10,0);
+
+            var userRepository = AppServiceProvider.GetService<IRepository<User>>();
+            await userRepository.SetAsync(new User
+            {
+                Name = "Anna",
+                Surname = "Cherypantseva",
+                Login = "Marfaakerman"
+            });
 
         }
     }

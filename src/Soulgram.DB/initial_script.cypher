@@ -9,10 +9,6 @@
 
 //Пользовательская информация:
 //1) Хобби
-//    2) Музыкальные вкусы
-//        2.1) Группы / Исполнители 
-//        2.2) Песни 
-//        2.3) Жанры
 //3) Любимые фильмы 
 //    3.1) Название фильмов 
 //    3.2) Жанры 
@@ -24,7 +20,7 @@
 
 MATCH (n) DETACH DELETE n;
 
-CREATE(u: User {name: "Dima", surname: "Kirieiev"})
+CREATE(u: User {name: "Dima", surname: "Kirieiev", login: "Dimanoit"})
 CREATE(g: Group { name: "System of a Down"})
 CREATE(s: Song { name: "Toxicity"})
 CREATE(mg: MusicalGenre { name: "Rock"})
@@ -34,4 +30,6 @@ CREATE (u)-[r2:LIKE]->(mg)
 CREATE (g)-[r3:HAVE_SONG]->(s)
 CREATE (g)-[r4:HAVE_GENRE]->(mg)
 
-
+//RUN IN SEPERATE TRANSACTION
+CREATE CONSTRAINT unique_login
+ON (u:User) ASSERT u.login IS UNIQUE

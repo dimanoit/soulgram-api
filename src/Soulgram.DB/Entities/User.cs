@@ -3,10 +3,13 @@ using Newtonsoft.Json;
 
 namespace Soulgram.DB.Entities
 {
-    public class User
+    public class User : EntityBase
     {
         [JsonProperty("name")]
         public string Name { get; set; }
+
+        [JsonProperty("name")]
+        public string Login { get; set; }
 
         [JsonProperty("surname")]
         public string Surname { get; set; }
