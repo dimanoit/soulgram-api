@@ -6,6 +6,7 @@ using Neo4j.Driver;
 
 namespace Soulgram.DB.Repositories
 {
+    // TODO implement add relationship 
     internal class UserRepository : IRepository<User>
     {
         private readonly IQueryRunner<User> _queryRunner;
@@ -44,9 +45,16 @@ namespace Soulgram.DB.Repositories
             throw new System.NotImplementedException();
         }
 
-        public Task<IEnumerable<User>> GetAsync(int take, int skip)
+        public async Task<IEnumerable<User>> GetAsync(int take, int skip)
         {
-            throw new System.NotImplementedException();
+            var query = @"MATCH(u: User)
+            RETURN u
+            ORDER BY u.login
+            SKIP $skip
+            LIMIT $take";
+
+            var cypherQuery = new Query(query, new { take, skip });
+            return await _queryRunner.ReadAsync(cypherQuery);
         }
 
         public async Task SetAsync(User user)
@@ -74,7 +82,7 @@ namespace Soulgram.DB.Repositories
             var endQuery = "})";
             if (typeof(T).IsValueType || parameter.Value != null)
             {
-                query.Replace(endQuery, "," + parameter.Key + endQuery);
+                query.Replace(endQuery, $",{parameter.Key}:${parameter.Key}{endQuery}");
                 parameters.Add(parameter.Key, parameter.Value);
             }
         }

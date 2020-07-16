@@ -33,17 +33,22 @@ namespace Soulgram.GraphScripts
             var driver = AppServiceProvider.GetService<IDriver>();
             await driver.VerifyConnectivityAsync();
 
-            var songRepository = AppServiceProvider.GetService<IRepository<Song>>();
-            var song = await songRepository.GetAsync(10,0);
+            //var songRepository = AppServiceProvider.GetService<IRepository<Song>>();
+            //var song = await songRepository.GetAsync(10, 0);
 
             var userRepository = AppServiceProvider.GetService<IRepository<User>>();
-            await userRepository.SetAsync(new User
+            //await userRepository.SetAsync(new User
+            //{
+            //    Name = "Anna",
+            //    Surname = "Cherypantseva",
+            //    Login = "Marfaakerman"
+            //});
+            foreach (var user in await userRepository.GetAsync(10, 1))
             {
-                Name = "Anna",
-                Surname = "Cherypantseva",
-                Login = "Marfaakerman"
-            });
+                Console.WriteLine(user.Name + " " + user.Surname + " " + user.Login);
+            }
 
+            Console.ReadLine();
         }
     }
 }

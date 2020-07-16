@@ -8,7 +8,7 @@ namespace Soulgram.DB.Entities
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("login")]
         public string Login { get; set; }
 
         [JsonProperty("surname")]
