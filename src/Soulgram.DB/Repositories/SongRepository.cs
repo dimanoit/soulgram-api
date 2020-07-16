@@ -23,22 +23,7 @@ namespace Soulgram.DB.Repositories
             RETURN s";
             var cypherQuery = new Query(query, new { id });
 
-            // ReadTransactionAsync<Song>(Query)
-            //TODO extract to generic function or create decorator over iDriver
-           Song song = await _queryRunner.ReadSingleAsync(cypherQuery);
-           return song;
-           //var session = _driver.AsyncSession();
-           //var result = await session.ReadTransactionAsync(async tx =>
-           //{
-           //    var cursor = await tx.RunAsync(cypherQuery);
-           //    return cursor.SingleAsync(record => record[0].As<INode>().Properties);
-           //});
-
-           //await session.CloseAsync();
-
-           //var actuallyResult = JsonConvert.SerializeObject(await result);
-           //var result1 = JsonConvert.DeserializeObject<Song>(actuallyResult);
-           //return result1;
+            return await _queryRunner.ReadSingleAsync(cypherQuery);
         }
         public Task<Song> GetAsync(Song obj)
         {
@@ -53,9 +38,7 @@ namespace Soulgram.DB.Repositories
             LIMIT $take";
 
             var cypherQuery = new Query(query, new { take, skip });
-            await Task.CompletedTask;
-            //TODO extract to generic function or create decorator over iDriver
-            return null;
+            return await _queryRunner.ReadAsync(cypherQuery);
         }
 
         public Task<Song> DeleteAsync(int id)
@@ -68,7 +51,7 @@ namespace Soulgram.DB.Repositories
         }
         public Task<Song> SetAsync(Song entity)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public Task<Song> BulkDeleteAsync(Song entity)
