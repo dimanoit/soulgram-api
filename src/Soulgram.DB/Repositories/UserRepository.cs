@@ -51,29 +51,32 @@ namespace Soulgram.DB.Repositories
 
         public async Task SetAsync(User user)
         {
-            var cypherQuery = new StringBuilder("CREATE (u:User {login: $login");
+            var cypherQuery = new StringBuilder("CREATE (u:User {login: $login})");
             var queryParameters = new Dictionary<string, object> { { "login", user.Login } };
 
-            // TODO make query builder
-            if (!string.IsNullOrEmpty(user.Name))
-            {
-                cypherQuery.Append(", name: $name");
-                queryParameters.Add("name", user.Name);
-            }
+            AddParameter(cypherQuery, new KeyValuePair<string, string>("name", user.Name), queryParameters);
+            AddParameter(cypherQuery, new KeyValuePair<string, string>("surname", user.Surname), queryParameters);
 
-            if (!string.IsNullOrEmpty(user.Surname))
-            {
-                cypherQuery.Append(", surname: $surname");
-                queryParameters.Add("surname", user.Surname);
-            }
-
-            var query = new Query(cypherQuery.Append("})").ToString(), queryParameters);
+            var query = new Query(cypherQuery.ToString(), queryParameters);
             await _queryRunner.RunQueryAsync(query);
         }
 
         public Task<User> UpdateAsync(User entity)
         {
             throw new System.NotImplementedException();
+        }
+
+        private void AddParameter<T>(
+            StringBuilder query,
+            KeyValuePair<string, T> parameter,
+            IDictionary<string, object> parameters)
+        {
+            var endQuery = "})";
+            if (typeof(T).IsValueType || parameter.Value != null)
+            {
+                query.Replace(endQuery, "," + parameter.Key + endQuery);
+                parameters.Add(parameter.Key, parameter.Value);
+            }
         }
     }
 }
