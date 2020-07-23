@@ -38,9 +38,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Soulgram.DB", "src\Soulgram
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Soulgram.IdentityServer", "src\Soulgram.IdentityServer\Soulgram.IdentityServer.csproj", "{D7F7926B-3654-4981-B3A2-D338231E3818}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soulgram.TestApi", "src\Soulgram.TestApi\Soulgram.TestApi.csproj", "{29EB5EEF-A7F2-4D25-8A51-AC55978DEEA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Soulgram.TestApi", "src\Soulgram.TestApi\Soulgram.TestApi.csproj", "{29EB5EEF-A7F2-4D25-8A51-AC55978DEEA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soulgram.TestApi2", "src\Soulgram.TestApi2\Soulgram.TestApi2.csproj", "{B270D137-8ECE-41A3-A255-0E2AD4704C1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Soulgram.TestApi2", "src\Soulgram.TestApi2\Soulgram.TestApi2.csproj", "{B270D137-8ECE-41A3-A255-0E2AD4704C1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soulgram.MvcClient", "src\Soulgram.MvcClient\Soulgram.MvcClient.csproj", "{1E5D601F-8898-4CE5-8F65-4AA899201408}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -96,6 +98,10 @@ Global
 		{B270D137-8ECE-41A3-A255-0E2AD4704C1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B270D137-8ECE-41A3-A255-0E2AD4704C1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B270D137-8ECE-41A3-A255-0E2AD4704C1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E5D601F-8898-4CE5-8F65-4AA899201408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E5D601F-8898-4CE5-8F65-4AA899201408}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E5D601F-8898-4CE5-8F65-4AA899201408}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E5D601F-8898-4CE5-8F65-4AA899201408}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -113,6 +119,7 @@ Global
 		{D7F7926B-3654-4981-B3A2-D338231E3818} = {6D5A4C17-21B1-4D55-ABF3-74BF5D3C468F}
 		{29EB5EEF-A7F2-4D25-8A51-AC55978DEEA3} = {6D5A4C17-21B1-4D55-ABF3-74BF5D3C468F}
 		{B270D137-8ECE-41A3-A255-0E2AD4704C1C} = {6D5A4C17-21B1-4D55-ABF3-74BF5D3C468F}
+		{1E5D601F-8898-4CE5-8F65-4AA899201408} = {6D5A4C17-21B1-4D55-ABF3-74BF5D3C468F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5895179C-BE08-4AA2-9BA0-98C93975A973}
